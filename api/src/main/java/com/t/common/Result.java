@@ -6,7 +6,7 @@ public class Result <T> {
 	
 	private String msg;
 	
-	private T t;
+	private T data;
 
 	public static Result<?> SUCCESS = new Result<>(ResultCode.SUCCESS);
 	
@@ -21,17 +21,17 @@ public class Result <T> {
 		this.code = code;
 	}
 
-	public Result(ResultCode code, T t) {
+	public Result(ResultCode code, T data) {
 		super();
 		this.code = code;
-		this.t = t;
+		this.data = data;
 	}
 
-	public Result(ResultCode code, String msg, T t) {
+	public Result(ResultCode code, String msg, T data) {
 		super();
 		this.code = code;
 		this.msg = msg;
-		this.t = t;
+		this.data = data;
 	}
 
 	public ResultCode getCode() {
@@ -50,12 +50,12 @@ public class Result <T> {
 		this.msg = msg;
 	}
 
-	public T getT() {
-		return t;
+	public T getData() {
+		return data;
 	}
 
-	public void setT(T t) {
-		this.t = t;
+	public void setData(T t) {
+		this.data = data;
 	}
 	
 }

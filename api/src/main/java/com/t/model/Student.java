@@ -1,15 +1,19 @@
 package com.t.model;
 
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.util.Date;
 
 public class Student {
-	
+
+	@TableId(type = IdType.AUTO)
 	private Long id;
 	
 	private String name;
 	
 	private Integer age;
-	
+
+	@TableField(value = "create_time",fill = FieldFill.INSERT, update = "now()")
 	private Date createTime;
 
 	public Long getId() {
