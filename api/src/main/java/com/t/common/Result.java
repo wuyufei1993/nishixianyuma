@@ -8,27 +8,20 @@ public class Result <T> {
 	
 	private T data;
 
-	public static Result<?> SUCCESS = new Result<>(ResultCode.SUCCESS);
-	
-	public static Result<?> FAIL = new Result<>(ResultCode.FAIL);
-	
 	public Result() {
-		super();
+
 	}
 
 	public Result(ResultCode code) {
-		super();
 		this.code = code;
 	}
 
 	public Result(ResultCode code, T data) {
-		super();
 		this.code = code;
 		this.data = data;
 	}
 
 	public Result(ResultCode code, String msg, T data) {
-		super();
 		this.code = code;
 		this.msg = msg;
 		this.data = data;
@@ -54,8 +47,7 @@ public class Result <T> {
 		return data;
 	}
 
-	public void setData(T t) {
+	public void setData(T data) {
 		this.data = data;
 	}
-	
 }

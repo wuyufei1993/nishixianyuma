@@ -23,7 +23,6 @@ public class Provider1Controller implements Provider1Api {
 			setAge(10);
 			setName("nishixianyuma");
 		}});
-		System.out.println(studentService.list());
 		return new Result<List<Student>>(ResultCode.SUCCESS, studentService.list());
 	}
 
