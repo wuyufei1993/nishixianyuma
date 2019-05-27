@@ -1,0 +1,18 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka
+eureka:
+  environment: dev
+  server:
+    eviction-interval-timer-in-ms: 10000
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  instance:
+    prefer-ip-address: true
+
+

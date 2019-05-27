@@ -4,9 +4,12 @@ server:
 spring:
   application:
     name: aconsumer
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
 eureka:
   instance:
-    ip-address: true
+    prefer-ip-address: true
   client:
     service-url:
       defaultZone: http://nsxym.top:7200/eureka

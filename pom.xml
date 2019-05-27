@@ -18,12 +18,17 @@
 	</properties>
 	<modules>
 		<module>api</module>
+		<module>eureka</module>
 		<module>gateway</module>
 		<module>aconsumer</module>
 		<module>provider1</module>
 		<module>provider2</module>
 	</modules>
 	<dependencies>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 </project>

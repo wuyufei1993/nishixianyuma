@@ -1,6 +1,7 @@
 package com.t.model;
 
 import com.baomidou.mybatisplus.annotation.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -13,7 +14,8 @@ public class Student {
 	
 	private Integer age;
 
-	@TableField(value = "create_time",fill = FieldFill.INSERT, update = "now()")
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@TableField(value = "create_time",fill = FieldFill.INSERT)
 	private Date createTime;
 
 	public Long getId() {
