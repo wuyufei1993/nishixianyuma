@@ -19,16 +19,12 @@ public class Provider1Controller implements Provider1Api {
 
 	@Override
 	public Result<List<Student>> getStudents() {
-		studentService.save(new Student() {{
-			setAge(10);
-			setName("nishixianyuma");
-		}});
-		return new Result<List<Student>>(ResultCode.SUCCESS, studentService.list());
+		return new Result<>(ResultCode.SUCCESS, studentService.list());
 	}
 
 	@Override
 	public Result<Student> getStudent(@PathVariable Long id) {
-		return new Result<Student>(ResultCode.SUCCESS, studentService.getById(id));
+		return new Result<>(ResultCode.SUCCESS, studentService.getById(id));
 	}
 
 }
