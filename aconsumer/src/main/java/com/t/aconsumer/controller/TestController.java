@@ -1,15 +1,13 @@
 package com.t.aconsumer.controller;
 
-import com.t.common.ResultCode;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.t.common.Result;
 import com.t.model.Student;
 import com.t.service.Provider1Service;
 import com.t.service.Provider2Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -29,6 +27,7 @@ public class TestController {
 
 	@GetMapping("/test")
 	public Result<List<Student>> test() {
+		provider2Service.getClazzs();
 		return provider1Service.getStudents();
 	}
 	

@@ -2,6 +2,7 @@ package com.t.service;
 
 import java.util.List;
 
+import com.t.common.ResultCode;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 
@@ -22,16 +23,24 @@ class Provider1FallbackFactory implements FallbackFactory<Provider1Service> {
 	@Override
 	public Provider1Service create(Throwable cause) {
 		return new Provider1Service() {
-			
+			@Override
+			public Result<Void> saveStudent(Student student) {
+				return new Result<>(ResultCode.ERROR);
+			}
+
+			@Override
+			public Result<Void> deleteStudent(Long id) {
+				return new Result<>(ResultCode.ERROR);
+			}
+
 			@Override
 			public Result<List<Student>> getStudents() {
-				return null;
+				return new Result<>(ResultCode.ERROR);
 			}
 			
 			@Override
 			public Result<Student> getStudent(Long id) {
-				// TODO Auto-generated method stub
-				return null;
+				return new Result<>(ResultCode.ERROR);
 			}
 		};
 	}

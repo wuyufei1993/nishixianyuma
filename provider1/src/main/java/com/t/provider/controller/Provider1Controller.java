@@ -27,4 +27,21 @@ public class Provider1Controller implements Provider1Api {
 		return new Result<>(ResultCode.SUCCESS, studentService.getById(id));
 	}
 
+	@Override
+	public Result<Void> saveStudent(Student student) {
+		if (studentService.saveOrUpdate(student)) {
+			return new Result<>(ResultCode.SUCCESS);
+		} else {
+			return new Result<>(ResultCode.FAIL);
+		}
+	}
+
+	@Override
+	public Result<Void> deleteStudent(Long id) {
+		if (studentService.removeById(id)) {
+			return new Result<>(ResultCode.SUCCESS);
+		} else {
+			return new Result<>(ResultCode.FAIL);
+		}
+	}
 }

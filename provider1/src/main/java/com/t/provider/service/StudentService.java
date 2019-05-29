@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -23,6 +24,9 @@ public class StudentService implements IService<Student> {
 
     @Override
     public boolean save(Student entity) {
+        if (entity.getCreateTime() == null) {
+            entity.setCreateTime(new Date());
+        }
         return studentMapper.insert(entity) > 0;
     }
 
