@@ -1,6 +1,9 @@
 package com.t.aconsumer.controller;
 
+import com.codingapi.txlcn.tc.annotation.LcnTransaction;
 import com.t.common.Result;
+import com.t.common.ResultCode;
+import com.t.model.Clazz;
 import com.t.model.Student;
 import com.t.service.Provider1Service;
 import com.t.service.Provider2Service;
@@ -29,6 +32,23 @@ public class TestController {
 	public Result<List<Student>> test() {
 		provider2Service.getClazzs();
 		return provider1Service.getStudents();
+	}
+
+	@LcnTransaction
+	@GetMapping("/testlcn")
+	public Result<Void> testlcn() {
+		Student student = new Student() {{
+			setAge(11);
+			setName("xxxx");
+		}};
+
+		Clazz clazz = new Clazz() {{
+			setName("1");
+			setStudentId(10l);
+		}};
+		provider1Service.saveStudent(student);
+		provider2Service.saveClazz(clazz);
+		return new Result<>(ResultCode.SUCCESS);
 	}
 	
 }

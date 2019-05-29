@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -23,6 +24,9 @@ public class ClazzService implements IService<Clazz> {
 
     @Override
     public boolean save(Clazz entity) {
+        if (entity.getCreateTime() == null) {
+            entity.setCreateTime(new Date());
+        }
         return clazzMapper.insert(entity) > 0;
     }
 

@@ -6,6 +6,7 @@ import com.t.provider.config.RabbitConfig;
 import com.t.provider.service.ClazzService;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.t.api.Provider2Api;
@@ -22,9 +23,13 @@ public class Provider2Controller implements Provider2Api {
 	@Autowired
 	private AmqpTemplate amqpTemplate;
 
+	@Autowired
+	private RedisTemplate redisTemplate;
+
 	@Override
 	public Result<List<Clazz>> getClazzs() {
 		amqpTemplate.convertAndSend(RabbitConfig.TEST_QUEUE, "hello world");
+		redisTemplate.opsForHash().put("test","1", "2");
 		return new Result<>(ResultCode.SUCCESS, clazzService.list());
 	}
 
