@@ -1,5 +1,6 @@
 package com.t.provider;
 
+import com.codingapi.txlcn.tc.config.EnableDistributedTransaction;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +13,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableHystrix
 @SpringBootApplication
 @MapperScan("com.t.**.mapper")
+@EnableDistributedTransaction
 public class Provider2Application {
 
 	public static void main(String[] args) {

@@ -3,6 +3,7 @@ package com.t.service;
 import java.util.List;
 
 import com.t.common.ResultCode;
+import com.t.exception.HystrixException;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 
