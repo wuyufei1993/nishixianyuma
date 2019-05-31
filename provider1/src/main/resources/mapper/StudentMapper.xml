@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper xmlns="http://mybatis.org/schema/mybatis-mapper" namespace="com.t.provider.mapper.StudentMapper">
+
+    <insert id="insertStudent" useGeneratedKeys="true" keyProperty="id">
+        insert into student select * from student
+    </insert>
+</mapper>

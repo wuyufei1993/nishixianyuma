@@ -1,15 +1,11 @@
 package com.t.provider.controller;
 
-import com.codingapi.txlcn.tc.annotation.DTXPropagation;
-import com.codingapi.txlcn.tc.annotation.LcnTransaction;
-import com.codingapi.txlcn.tc.annotation.TccTransaction;
 import com.t.api.Provider1Api;
 import com.t.common.Result;
 import com.t.common.ResultCode;
 import com.t.model.Student;
 import com.t.provider.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,8 +28,6 @@ public class Provider1Controller implements Provider1Api {
 	}
 
 	@Override
-	@Transactional
-	@LcnTransaction(propagation = DTXPropagation.SUPPORTS)
 	public Result<Void> saveStudent(Student student) {
 		if (studentService.saveOrUpdate(student)) {
 			return new Result<>(ResultCode.SUCCESS);

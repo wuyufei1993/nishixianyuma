@@ -15,7 +15,6 @@
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Greenwich.SR1</spring-cloud.version>
 		<mybatis-plus.version>3.1.1</mybatis-plus.version>
-		<tx-lcn.version>5.0.2.RELEASE</tx-lcn.version>
 	</properties>
 	<modules>
 		<module>api</module>
@@ -26,6 +25,13 @@
 		<module>provider2</module>
 	</modules>
 	<dependencies>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.9</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>

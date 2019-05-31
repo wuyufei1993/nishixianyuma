@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.codingapi.txlcn.tc.annotation.LcnTransaction;
 import com.t.model.Student;
 import com.t.provider.mapper.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +77,7 @@ public class StudentService implements IService<Student> {
     }
 
     @Override
+    @Transactional
     public boolean saveOrUpdate(Student entity) {
         if (entity.getId() != null) {
             return updateById(entity);

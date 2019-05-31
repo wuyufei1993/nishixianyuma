@@ -1,6 +1,5 @@
 package com.t.aconsumer.controller;
 
-import com.codingapi.txlcn.tc.annotation.LcnTransaction;
 import com.t.common.Result;
 import com.t.common.ResultCode;
 import com.t.exception.HystrixException;
@@ -9,7 +8,6 @@ import com.t.model.Student;
 import com.t.service.Provider1Service;
 import com.t.service.Provider2Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,7 +35,6 @@ public class TestController {
 	}
 
 	@GetMapping("/testlcn")
-	@LcnTransaction
 	public Result<Void> testlcn() {
 		Student student = new Student() {{
 			setAge(11);
@@ -50,15 +47,12 @@ public class TestController {
 		}};
 		Result studentResult = provider1Service.saveStudent(student);
 		if (studentResult == null || !ResultCode.SUCCESS.equals(studentResult.getCode())) {
-			throw new HystrixException();
+			return new Result<>(ResultCode.FAIL);
 		}
 
 		Result clazzResult = provider2Service.saveClazz(clazz);
 		if (clazzResult == null || !ResultCode.SUCCESS.equals(clazzResult.getCode())) {
-			throw new HystrixException();
-		}
-		if (1 == 1) {
-			throw new HystrixException();
+			return new Result<>(ResultCode.FAIL);
 		}
 		return new Result<>(ResultCode.SUCCESS);
 	}

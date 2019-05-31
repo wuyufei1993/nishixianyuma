@@ -1,8 +1,5 @@
 package com.t.provider.controller;
 
-import com.codingapi.txlcn.tc.annotation.DTXPropagation;
-import com.codingapi.txlcn.tc.annotation.LcnTransaction;
-import com.codingapi.txlcn.tc.annotation.TccTransaction;
 import com.t.api.Provider2Api;
 import com.t.common.Result;
 import com.t.common.ResultCode;
@@ -12,7 +9,6 @@ import com.t.provider.service.ClazzService;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -42,8 +38,6 @@ public class Provider2Controller implements Provider2Api {
 	}
 
 	@Override
-	@Transactional
-	@LcnTransaction(propagation = DTXPropagation.SUPPORTS)
 	public Result<Void> saveClazz(Clazz clazz) {
 		return clazzService.saveOrUpdate(clazz) ? new Result<>(ResultCode.SUCCESS) : new Result<>(ResultCode.FAIL);
 	}
