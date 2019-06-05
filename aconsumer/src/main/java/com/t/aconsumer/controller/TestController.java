@@ -1,12 +1,11 @@
 package com.t.aconsumer.controller;
 
+import com.t.api.Provider1Api;
+import com.t.api.Provider2Api;
 import com.t.common.Result;
 import com.t.common.ResultCode;
-import com.t.exception.HystrixException;
 import com.t.model.Clazz;
 import com.t.model.Student;
-import com.t.service.Provider1Service;
-import com.t.service.Provider2Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,10 +17,10 @@ import java.util.List;
 public class TestController {
 	
 	@Autowired
-	private Provider1Service provider1Service;
+	private Provider1Api provider1Service;
 	
 	@Autowired
-	private Provider2Service provider2Service;
+	private Provider2Api provider2Service;
 	
 	@GetMapping("/test/{id}")
 	public Result<Student> test(@PathVariable Long id) {
@@ -45,7 +44,9 @@ public class TestController {
 			setName("1");
 			setStudentId(10l);
 		}};
+		long start = System.currentTimeMillis();
 		Result studentResult = provider1Service.saveStudent(student);
+		System.out.println(System.currentTimeMillis() - start);
 		if (studentResult == null || !ResultCode.SUCCESS.equals(studentResult.getCode())) {
 			return new Result<>(ResultCode.FAIL);
 		}

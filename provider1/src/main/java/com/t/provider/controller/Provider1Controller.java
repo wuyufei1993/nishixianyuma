@@ -1,6 +1,7 @@
 package com.t.provider.controller;
 
 import com.t.api.Provider1Api;
+import com.t.api.Provider2Api;
 import com.t.common.Result;
 import com.t.common.ResultCode;
 import com.t.model.Student;
@@ -17,6 +18,9 @@ public class Provider1Controller implements Provider1Api {
 	@Autowired
 	private StudentService studentService;
 
+	@Autowired
+	private Provider2Api provider2Service;
+
 	@Override
 	public Result<List<Student>> getStudents() {
 		return new Result<>(ResultCode.SUCCESS, studentService.list());
@@ -29,6 +33,7 @@ public class Provider1Controller implements Provider1Api {
 
 	@Override
 	public Result<Void> saveStudent(Student student) {
+		provider2Service.getClazzs();
 		if (studentService.saveOrUpdate(student)) {
 			return new Result<>(ResultCode.SUCCESS);
 		} else {

@@ -22,14 +22,19 @@ spring:
   redis:
     host: nsxym.top
     port: 7201
+  zipkin:
+    base-url: http://nsxym.top:7203
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1
 
-tx-lcn:
-  client:
-    manager-address: localhost:8070
 
 feign:
   hystrix:
     enabled: true
+
 
 eureka:
   instance:

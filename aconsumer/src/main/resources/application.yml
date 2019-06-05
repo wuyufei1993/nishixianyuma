@@ -21,14 +21,32 @@ spring:
   redis:
     host: nsxym.top
     port: 7201
-
-tx-lcn:
-  client:
-    manager-address: localhost:8070
+  zipkin:
+    base-url: http://nsxym.top:7203
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1
 
 feign:
   hystrix:
     enabled: true
+#feign超时设置
+  client:
+    config:
+      default:
+        connect-timeout: 1000
+        read-timeout: 3000
+
+#hystrix超时设置（默认为1s）
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
 
 eureka:
   instance:
@@ -40,4 +58,3 @@ eureka:
 logging:
   level:
     root: info
-    com.t: debug
